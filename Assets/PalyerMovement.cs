@@ -6,15 +6,18 @@ using UnityEngine;
 public class PalyerMovement : MonoBehaviour
 {
     public float Speed;
+
+    Rigidbody2D rigid;
+    Animator anim;
     float h;
     float v;
     bool isHorizonMove;
 
-    Rigidbody2D rigid;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -34,10 +37,25 @@ public class PalyerMovement : MonoBehaviour
         //stack을 구현해서 플레이어의 가장 최신 이동을 감지해 방향을 바꾸고
         //키를 떼면 눌려있는 키중에서 가장 최근에 들어온 키대로 움직이게 하자
 
-        if (hDown || vUp)
+        if (hDown)
             isHorizonMove = true;
-        else if (hUp || vDown)
+        else if (vDown)
             isHorizonMove = false;
+        else if(hUp||vUp)
+            isHorizonMove = h != 0;
+
+        //Animation
+        if (anim.GetInteger("hAxisRaw") != h)
+        {
+            anim.SetBool("IsChange", true);
+            anim.SetInteger("hAxisRaw", (int)h);
+        }
+        else if(anim.GetInteger("vAxisRaw") != v){
+            anim.SetBool("IsChange", true);
+            anim.SetInteger("vAxisRaw", (int)v); 
+        }
+        else
+            anim.SetBool("IsChange", false);
     }
 
     private void FixedUpdate()
