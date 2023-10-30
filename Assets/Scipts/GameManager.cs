@@ -6,23 +6,41 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TalkManager talkManager;
+    public GameObject talkPanel;
     public Text talkText;
     public GameObject scanObject;
-
+    public bool isAction;
+    public int talkIndex;
     public void Action(GameObject scanObj)
     {
         scanObject = scanObj;
-        talkText.text = "이것의 이름은 " + scanObject.name + "이라고 한다.";
-    }
-    void Start()
-    {
-        
+        ObjData objData = scanObj.GetComponent<ObjData>();
+        Talk(objData.id, objData.isNpc);
+
+        talkPanel.SetActive(isAction);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Talk(int id,bool isNpc)
     {
-        
+        string talkData = talkManager.GetTalk(id, talkIndex);
+
+        if (talkData == null)
+        {
+            isAction = false;
+            talkIndex = 0;
+            return;
+        }
+        if (isNpc)
+        {
+            talkText.text = talkData;
+        }
+        else
+        {
+            talkText.text = talkData;
+        }
+
+        isAction = true;
+        talkIndex++;
     }
 }
