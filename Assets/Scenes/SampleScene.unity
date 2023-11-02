@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 141125677}
   - component: {fileID: 141125676}
   m_Layer: 5
-  m_Name: Image
+  m_Name: TalkSet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -828,6 +828,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 395991876}
   - {fileID: 104425000}
   - {fileID: 721074497}
   m_Father: {fileID: 1354067149}
@@ -1075,6 +1076,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 290629692047198474, guid: 05b0f87dd97e4c44ebe0358f61ab967c, type: 3}
   m_PrefabInstance: {fileID: 353445990448496575}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &395991875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 395991876}
+  - component: {fileID: 395991877}
+  - component: {fileID: 395991878}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &395991876
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395991875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 141125675}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -20, y: 200}
+  m_SizeDelta: {x: 141.66663, y: 191.66667}
+  m_Pivot: {x: 1, y: 0}
+--- !u!222 &395991877
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395991875}
+  m_CullTransparentMesh: 1
+--- !u!114 &395991878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395991875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300002, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &419944583
 GameObject:
   m_ObjectHideFlags: 0
@@ -6012,7 +6088,7 @@ GameObject:
   - component: {fileID: 721074499}
   - component: {fileID: 721074498}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Endcusor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6663,6 +6739,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a259aff09c50b459a3a18576cdf7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portraitArr:
+  - {fileID: 21300002, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
+  - {fileID: 21300004, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
+  - {fileID: 21300000, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
+  - {fileID: 21300006, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
+  - {fileID: 21300010, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
+  - {fileID: 21300012, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
+  - {fileID: 21300008, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
+  - {fileID: 21300014, guid: d79edf18a76e2654a9ac99f15de8b2b3, type: 3}
 --- !u!4 &1448610346
 Transform:
   m_ObjectHideFlags: 0
@@ -10116,6 +10201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkManager: {fileID: 1448610345}
   talkPanel: {fileID: 141125674}
+  portraiting: {fileID: 395991878}
   talkText: {fileID: 104425001}
   scanObject: {fileID: 0}
   isAction: 0
