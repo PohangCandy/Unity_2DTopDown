@@ -7,31 +7,45 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public TalkManager talkManager;
+    public QuestManager questManager;
     public GameObject talkPanel;
     public Image portraiting;
     public Text talkText;
     public GameObject scanObject;
     public bool isAction;
     public int talkIndex;
+
+    public void Start()
+    {
+        Debug.Log(questManager.CheckQuest());
+    }
     public void Action(GameObject scanObj)
     {
+        //Get Current Object
         scanObject = scanObj;
         ObjData objData = scanObj.GetComponent<ObjData>();
         Talk(objData.id, objData.isNpc);
 
+        //Visible Talk for Action
         talkPanel.SetActive(isAction);
     }
 
     void Talk(int id,bool isNpc)
     {
-        string talkData = talkManager.GetTalk(id, talkIndex);
+        //Set Talk Index
+        int questTalkIndex = questManager.GetQuestTalkIndex(id);
+        string talkData = talkManager.GetTalk(id + questTalkIndex, talkIndex);
 
+        //End Talk
         if (talkData == null)
         {
             isAction = false;
             talkIndex = 0;
+            Debug.Log(questManager.CheckQuest(id));
             return;
         }
+
+        //Continue Talk
         if (isNpc)
         {
             talkText.text = talkData.Split(":")[0];
