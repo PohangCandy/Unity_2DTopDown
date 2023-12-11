@@ -68,19 +68,18 @@ public class TalkManager : MonoBehaviour
     {
         if (!talkData.ContainsKey(id))
         {
-            if(!talkData.ContainsKey(id - id % 10))
-                //퀘스트 맨 처음 대사마저 없을 때
-                //기본 대사를 가지고 온다.
+            //퀘스트 맨 처음 대사마저 없을 때
+            //기본 대사를 가지고 온다.
+            if (!talkData.ContainsKey(id - id % 10))
                 return GetTalk(id - id % 100, talkIndex); //Get First
             else
-                return GetTalk(id - id % 10,talkIndex); //Get First Quest Talk
+                return GetTalk(id - id % 10, talkIndex); //Get First Quest Talk
         }
 
         if (talkIndex == talkData[id].Length)
             return null;
         else
             return talkData[id][talkIndex];
-
     }
 
     public Sprite GetPortrait(int id, int portraitindex)
