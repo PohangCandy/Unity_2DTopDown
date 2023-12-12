@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,7 +38,11 @@ public class GameManager : MonoBehaviour
             else
                 menuSet.SetActive(true);
         }
-           
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SceneManager.LoadScene("Store");
+        }
+
     }
     public void Action(GameObject scanObj)
     {

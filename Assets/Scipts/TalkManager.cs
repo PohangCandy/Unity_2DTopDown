@@ -2,7 +2,6 @@ using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class TalkManager : MonoBehaviour
 {
     Dictionary<int, string[]> talkData;
@@ -30,7 +29,7 @@ public class TalkManager : MonoBehaviour
                                           "이 호수는 정말 아름답지?:0",
                                           "사실 이곳엔 숨겨진 비밀이 있어.:1"});
 
-        talkData.Add(100, new string[] { "평범한 나무상자다."});
+        talkData.Add(100, new string[] { "내가 가지고 다니는 나무상자다."});
         talkData.Add(200, new string[] { "누군가 사용한 흔적이 있는 책상이다."});
 
         //Quest Talk
