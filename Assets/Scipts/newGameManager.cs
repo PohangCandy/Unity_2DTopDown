@@ -56,7 +56,7 @@ public class newGameManager : MonoBehaviour
 
         //게임을 시작하고 파일경로를 persistentDataPath를 통해 받아온다.
         filePath = Application.persistentDataPath + "/MyItemText.txt";
-        Save();
+        Load();
 
         ExplainRect = ExplainPanel.GetComponent<RectTransform>();
     }
@@ -210,10 +210,8 @@ public class newGameManager : MonoBehaviour
         ExplainPanel.SetActive(false);
     }
     void Save()
-    {
-        MyItemList.Add(AllItemList[0]);
-        Item Item = MyItemList[0];
-        string jdata = JsonUtility.ToJson(Item);
+    {   
+        string jdata = JsonUtility.ToJson(new Serialization<Item>(MyItemList));
         //allitemlist의 내용을 JsonConvert를 통해 직렬화(한 줄로 표현됨).
         //using Unity IO가 있어야 한다.
         //Application.dataPath는 프로젝트 파일의 asset까지 경로를 나타낸다.
@@ -230,6 +228,11 @@ public class newGameManager : MonoBehaviour
         //역직렬화를 통해서 스트링을 리스트로 만들어준다.
         //DeserializeObject<List<형식이 될 클래스>>(jdata);
         string jdata = File.ReadAllText(filePath);
+        //T FromJson<T>(string json);
+        //T: 역직렬화할 데이터의 C# 타입을 나타낸다.
+        //json: JSON 형식의 문자열이다.
+        MyItemList = JsonUtility.FromJson<Serialization<Item>>(jdata).target;
+
         TabClick(curType);
     }
 
