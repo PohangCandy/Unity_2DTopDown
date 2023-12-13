@@ -1,1 +1,1 @@
-[{"Type":"Character","Name":"Pig","Explain":"돼지","Number":"1","Index":"0\r","isUsing":false},{"Type":"Character","Name":"Bee","Explain":"벌","Number":"10","Index":"2\r","isUsing":false}]
+[{"Type":"Character","Name":"Pig","Explain":"돼지","Number":"3","Index":"0\r","isUsing":false}]

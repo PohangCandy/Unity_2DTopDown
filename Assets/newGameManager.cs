@@ -68,7 +68,9 @@ public class newGameManager : MonoBehaviour
         //inputfield의 텍스트와 내가 가지고 있는 아이템 리스트의 아이템 x중에 이름이 일치하는 것이 있다면
         // 그 아이템 x를 curItem으로 저장해준다.
         Item curItem = MyItemList.Find(x => x.Name == ItemNameInput.text);
-       if(curItem != null) 
+        //ItemNumberInput.text가 아무것도 입력을 받지 않았다면 값을 1로 바꿔준다.
+        ItemNumberInput.text = ItemNumberInput.text == "" ? "1" : ItemNumberInput.text;
+        if (curItem != null) 
         {
            //아이템이 비어있지 않다면 스트링 형식으로 저장되어 있는 아이템의 숫자를 int형태로 파씽해주고
            //inputfield에 입력한 아이템 개수만큼 더해준다.
@@ -85,7 +87,8 @@ public class newGameManager : MonoBehaviour
             }
                 
         }
-        //MyItemList.Sort((p1, p2) => p1.Index.CompareTo(p2.Index));
+       //내가 가진 아이템 목록 중에서 두가지 항목의 인덱스 번호를 비교해서, 정렬해준다.
+        MyItemList.Sort((p1, p2) => p1.Index.CompareTo(p2.Index));
         Save();
     }
 
@@ -94,12 +97,12 @@ public class newGameManager : MonoBehaviour
         Item curItem = MyItemList.Find(x=>x.Name == ItemNameInput.text);
         if(curItem != null)
         {
-           int curNumber = int.Parse(curItem.Number) - int.Parse(ItemNumberInput.text);
+           int curNumber = int.Parse(curItem.Number) - int.Parse(ItemNumberInput.text == ""?"1":ItemNumberInput.text);
 
             if(curNumber <= 0) MyItemList.Remove(curItem);
             else curItem.Number = curNumber.ToString();
         }
-        //MyItemList.Sort((p1, p2) => p1.Index.CompareTo(p2.Index));
+        MyItemList.Sort((p1, p2) => p1.Index.CompareTo(p2.Index));
         Save();
     }
 
