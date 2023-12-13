@@ -85,7 +85,7 @@ public class newGameManager : MonoBehaviour
             }
                 
         }
-        MyItemList.Sort((p1, p2) => p1.Index.CompareTo(p2.Index));
+        //MyItemList.Sort((p1, p2) => p1.Index.CompareTo(p2.Index));
         Save();
     }
 
@@ -99,7 +99,14 @@ public class newGameManager : MonoBehaviour
             if(curNumber <= 0) MyItemList.Remove(curItem);
             else curItem.Number = curNumber.ToString();
         }
-        MyItemList.Sort((p1, p2) => p1.Index.CompareTo(p2.Index));
+        //MyItemList.Sort((p1, p2) => p1.Index.CompareTo(p2.Index));
+        Save();
+    }
+
+    public void ResetItemClick()
+    {
+        Item BasicItem = AllItemList.Find(x => x.Name == "Pig");
+        MyItemList = new List<Item>() { BasicItem };
         Save();
     }
     public void SlotClick(int slotNum)
