@@ -1,1 +1,0 @@
-[{"Type":"Character","Name":"Pig","Explain":"돼지","Number":"3","Index":"0\r","isUsing":false}]

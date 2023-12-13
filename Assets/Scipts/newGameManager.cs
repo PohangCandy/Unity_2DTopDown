@@ -1,4 +1,3 @@
-using Newtonsoft.Json; // json을 위한 함수 사용
 using System.Collections;
 using System.Collections.Generic;
 using System.IO; //파일을 텍스트 형식으로 저장하게 해준다.
@@ -6,8 +5,15 @@ using TMPro;
 using UnityEngine;
 //using UnityEngine.UIElements;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
+using JetBrains.Annotations;
+
+[System.Serializable]
+public class Serialization<T>
+{
+    public Serialization(List<T> _target) => target = _target;
+    public List<T> target;
+}
 
 [System.Serializable] //직렬화, inspector 창에서 보임
 public class Item
@@ -33,6 +39,7 @@ public class newGameManager : MonoBehaviour
     public TMP_InputField ItemNameInput, ItemNumberInput;
     IEnumerator PointerCoroutine;
     RectTransform ExplainRect;
+    string filePath; //파일경로
     void Start()
     {
         //전체 아이템 리스트 불러오기
@@ -47,7 +54,9 @@ public class newGameManager : MonoBehaviour
             AllItemList.Add(new Item(row[0], row[1], row[2], row[3], row[4] == "TRUE", row[5]));
         }
 
-        Load();
+        //게임을 시작하고 파일경로를 persistentDataPath를 통해 받아온다.
+        filePath = Application.persistentDataPath + "/MyItemText.txt";
+        Save();
 
         ExplainRect = ExplainPanel.GetComponent<RectTransform>();
     }
@@ -109,8 +118,10 @@ public class newGameManager : MonoBehaviour
     public void ResetItemClick()
     {
         Item BasicItem = AllItemList.Find(x => x.Name == "Pig");
+        BasicItem.isUsing = true; //불러온 아이템을 사용중으로 만들고 내 아이템 리스트에 저장해주자.
         MyItemList = new List<Item>() { BasicItem };
         Save();
+        Load();
     }
     public void SlotClick(int slotNum)
     {
@@ -200,23 +211,25 @@ public class newGameManager : MonoBehaviour
     }
     void Save()
     {
+        MyItemList.Add(AllItemList[0]);
+        Item Item = MyItemList[0];
+        string jdata = JsonUtility.ToJson(Item);
         //allitemlist의 내용을 JsonConvert를 통해 직렬화(한 줄로 표현됨).
-        string jdata = JsonConvert.SerializeObject(MyItemList);
         //using Unity IO가 있어야 한다.
         //Application.dataPath는 프로젝트 파일의 asset까지 경로를 나타낸다.
-        File.WriteAllText(Application.dataPath + "/Resources/MyItemText.txt", jdata);
+        File.WriteAllText(filePath, jdata);
 
         TabClick(curType);//업데이트를 위해 해준다.
     }
 
     void Load()
     {
+        //지정한 파일경로에 저장된 데이터가 없다면 초기화 시켜주자.
+        if (!File.Exists(filePath)) { ResetItemClick(); return; }
         //파일 경로의 모든 데이터를 불러온다.
         //역직렬화를 통해서 스트링을 리스트로 만들어준다.
         //DeserializeObject<List<형식이 될 클래스>>(jdata);
-        string jdata = File.ReadAllText(Application.dataPath + "/Resources/MyItemText.txt");
-        MyItemList = JsonConvert.DeserializeObject<List<Item>>(jdata);
-
+        string jdata = File.ReadAllText(filePath);
         TabClick(curType);
     }
 
