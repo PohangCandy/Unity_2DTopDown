@@ -18,7 +18,9 @@ public class QuestManager : MonoBehaviour
 
     void GenerateData()
     {
-        MyquestList.Add(10, new QuestData("마을 사람들과 대화하기."
+        MyquestList.Add(0, new QuestData("마을사람들과 대화하기"
+                                       , new int[] { 1000, 2000 }));
+        MyquestList.Add(10, new QuestData("호수의 전설듣기."
                                         ,new int[] {1000,2000 }));
         MyquestList.Add(20, new QuestData("루도의 동전 찾아주기."
                                        , new int[] { 5000, 2000 }));

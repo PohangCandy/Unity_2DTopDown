@@ -66,10 +66,15 @@ public class newGameManager : MonoBehaviour
         RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasRect, Input.mousePosition, Camera.main, out Vector2 anchoredPos);
         ExplainRect.anchoredPosition = anchoredPos + new Vector2(0,300);
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             SceneManager.LoadScene("Main");
         }
+    }
+
+    public void GotoMain()
+    {
+        SceneManager.LoadScene("Main");
     }
 
     public void GetItemClick()

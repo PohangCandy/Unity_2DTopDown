@@ -32,17 +32,25 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            //Sub menu
-            if (menuSet.activeSelf)
-                menuSet.SetActive(false);
-            else
-                menuSet.SetActive(true);
+            Menuset();
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             SceneManager.LoadScene("Store");
         }
 
+    }
+    public void GotoInventory()
+    {
+        SceneManager.LoadScene("Store");
+    }
+
+    public void Menuset()
+    {
+        if (menuSet.activeSelf)
+            menuSet.SetActive(false);
+        else
+            menuSet.SetActive(true);
     }
     public void Action(GameObject scanObj)
     {
