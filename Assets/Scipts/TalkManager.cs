@@ -26,18 +26,18 @@ public class TalkManager : MonoBehaviour
                                            "한번 둘러보도록 해.:0"});
 
         talkData.Add(2000, new string[] { "여어:1",
-                                          "이 호수는 정말 아름답지?:0",
-                                          "사실 이곳엔 숨겨진 비밀이 있어.:1"});
+                                          "이곳의 호수를 본 적 있니?:0",
+                                          "사실 그곳엔 숨겨진 비밀이 있어.:1"});
 
         talkData.Add(100, new string[] { "내가 가지고 다니는 나무상자다."});
         talkData.Add(200, new string[] { "누군가 사용한 흔적이 있는 책상이다."});
 
         //Quest Talk
-        talkData.Add(10 + 1000, new string[] { "어서와:1",
+        talkData.Add(10 + 1000, new string[] { "그거 알아?:1",
                                           "이 마을에 놀라운 전설이 있다는데:0" ,
                                           "오른쪽에 루도가 알려줄거야.:0"});
 
-        talkData.Add(11 + 2000, new string[] { "여어:1",
+        talkData.Add(11 + 2000, new string[] { "안녕, 또 보네:1",
                                           "이 호수의 전설을 들으러 온거야?:0" ,
                                           "그럼 일 좀 하나 해주면 좋을텐데...:1",
                                           "내 집 근처에 떨어진 동전 좀 주워줘.:0"});

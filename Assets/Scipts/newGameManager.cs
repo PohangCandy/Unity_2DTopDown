@@ -30,9 +30,9 @@ public class newGameManager : MonoBehaviour
     public TextAsset ItemDatabase;
     public List<Item> AllItemList,MyItemList,CurItemList;
     public string curType = "Character"; //클릭한 버튼의 이름, 처음 선택된 값을 character로 해주자.
-    public GameObject[] Slot, UsingImage;
+    public GameObject[] Slot, UsingImage;//, UsedItemImag;
     public Image[] TabImage, ItemImage;
-    public Sprite TabIdleSprite, TabSelectSprite; //클릭한 이미지와 기본 이미지
+    public Sprite TabIdleSprite, TabSelectSprite, Nothing; //클릭한 이미지와 기본 이미지
     public Sprite[] ItemSprite;
     public GameObject ExplainPanel; //설명창 가져오기
     public RectTransform CanvasRect;
@@ -136,7 +136,7 @@ public class newGameManager : MonoBehaviour
 
         if(curType == "Character")
         {
-            //만약 사용중인 아이템이 없다면 isusing을 거짓으로 만들어주자.
+            //만약 사용중인 아이템이 있다면 isusing을 거짓으로 만들어주자.
             if(UsingItem != null) UsingItem.isUsing = false;
             CurItem.isUsing = true;
         }
@@ -177,6 +177,13 @@ public class newGameManager : MonoBehaviour
                 ItemImage[i].sprite = ItemSprite[AllItemList.FindIndex(x => x.Name == CurItemList[i].Name)];
                 UsingImage[i].SetActive(CurItemList[i].isUsing);
             }
+
+            //UsedItemImag[0].GetComponent<Image>().sprite = ItemSprite[CurItemList.FindIndex(x => x.isUsing == true && x.Type == "Character")];
+            //if (ItemSprite[CurItemList.FindIndex(x => x.isUsing == true && x.Type != "Character")] != null)
+            //{
+            //    UsedItemImag[1].GetComponent<Image>().sprite = ItemSprite[CurItemList.FindIndex(x => x.isUsing == true && x.Type != "Character")];
+            //}
+            //UsedItemImag[1].GetComponent<Image>().sprite = Nothing;
         }
 
         //클릭한 버튼에 따라 이미지가 다르게 나오도록 하자.
